@@ -9,9 +9,9 @@ export const BudgetPlanTab1RowDetails: FC<Props> = ({}) => (
   <div className={'border-2 p-8'} style={{ height: 580 }}>
     <div>
       <div>
-              <div>
+        <div>
         Budget Frequency
-      </div>
+        </div>
         <Info></Info>
       </div>
       {/*dropdown*/}
