@@ -1,2 +1,2 @@
 export * from './BudgetPlanSetupChannel/BudgetPlanSetupChannel';
-export * from './BudgetPlanSetupTabsSelector/BudgetPlanSetupTabsSelector';
+export * from './BudgetPlanTabsSelector/BudgetPlanTabsSelector';

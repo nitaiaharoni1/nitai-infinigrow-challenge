@@ -1,5 +1,7 @@
 import { FC } from 'react';
 
+import { BudgetPlanAddChannelButton } from '../BudgetPlanAddChannelButton/BudgetPlanAddChannelButton';
+
 export const BudgetPlanSetupChannel: FC = () => (
   <div>
     <div className='font-semibold text-lg mt-4'>
@@ -13,9 +15,7 @@ export const BudgetPlanSetupChannel: FC = () => (
         the help of tips and insights.
       </div>
 
-      <div className='border-2 place-items-center px-2 h-10 w-32 cursor-pointer'>
-        + Add Channel
-      </div>
+      <BudgetPlanAddChannelButton />
     </div>
   </div>
 );

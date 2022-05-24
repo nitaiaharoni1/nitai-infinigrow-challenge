@@ -7,7 +7,7 @@ interface Props {
   setActiveTab: (tab: number) => void;
 }
 
-export const BudgetPlanSetupTabsSelector: FC<Props> = ({ activeTab = 0, setActiveTab }) => {
+export const BudgetPlanTabsSelector: FC<Props> = ({ activeTab = 0, setActiveTab }) => {
   const handleTabClick = (tab: number) => {
     setActiveTab(tab);
   };
