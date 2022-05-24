@@ -17,8 +17,8 @@ export const BudgetPlanTab1Row: FC<Props> = ({
   };
 
   return (
-    <div className='flex w-full border-2 h-14 items-center justify-between px-4' onClick={onClick}>
-      <div className='cursor-pointer flex items-center'>
+    <div className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow' onClick={onClick}>
+      <div className='flex items-center'>
         <ArrowDown className={`${isExpanded && 'rotate-180'}`} />
 
         <AffiliateProgram className='ml-8' />
@@ -28,7 +28,9 @@ export const BudgetPlanTab1Row: FC<Props> = ({
         </div>
       </div>
 
-      <Dots className='cursor-pointer' onClick={handleDotsClick} />
+      <div className='cursor-pointer w-14 h-14 flex items-center justify-content-center'>
+        <Dots onClick={handleDotsClick} />
+      </div>
     </div>
   );
 };

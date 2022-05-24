@@ -19,7 +19,7 @@ export const BudgetPlanTabsSelector: FC<Props> = ({ activeTab = 0, setActiveTab 
         return (
           <div
             key={tab.id}
-            className={`cursor-pointer ${isSelected ? 'underline underline-offset-4' : 'text-gray-400'}`}
+            className={`cursor-pointer ${isSelected ? 'underline underline-offset-4' : 'text-gray-400 hover:text-blue-300'}`}
             onClick={() => handleTabClick(index)}
           >
             {tab.label}
