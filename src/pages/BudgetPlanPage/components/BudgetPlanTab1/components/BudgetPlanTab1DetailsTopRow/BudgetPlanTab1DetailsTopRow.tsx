@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Info } from 'assets';
 import { TextInput } from 'components';
+import { CategoryInput } from 'components/CategoryInput/CategoryInput';
 
 interface Props {
 
@@ -52,7 +53,20 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({}) => (
         <Info />
       </div>
 
-      {/* dropdown */}
+      <CategoryInput
+        options={
+          [
+            {
+              key: 'equal',
+              label: 'Equal',
+            },
+            {
+              key: 'manual',
+              label: 'Manual',
+            },
+          ]
+        }
+      />
 
       <div />
     </div>
