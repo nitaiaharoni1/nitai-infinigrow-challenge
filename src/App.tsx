@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { Router } from 'Router';
 
 export const App: FC = () => (
-  <div style={{ margin: '2rem' }}>
+  <div className='m-16'>
     <Router />
   </div>
 );
