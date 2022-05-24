@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "include": [
-      "src",
-      "src/typings.d.ts"
+      "src/**/*"
+    ],
+    "exclude": [
+      "node_modules"
     ],
     "target": "es5",
     "lib": [
