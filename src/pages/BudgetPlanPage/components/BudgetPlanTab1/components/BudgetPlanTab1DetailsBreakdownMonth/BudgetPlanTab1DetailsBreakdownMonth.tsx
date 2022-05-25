@@ -14,11 +14,14 @@ export const BudgetPlanTab1DetailsBreakdownMonth: FC<Props> = ({
   isEqual,
   value,
 }) => {
+  debugger
+  
   const year = new Date().toLocaleDateString('en-us', { year: 'numeric' })
     .toString()
     .substr(-2);
   const monthString = getMonthName(monthIndex);
   const title = `${monthString} ${year}`;
+  
   return (
     <div>
       <div>
