@@ -14,8 +14,6 @@ export const BudgetPlanTab1DetailsBreakdownMonth: FC<Props> = ({
   isEqual,
   value,
 }) => {
-  debugger;
-
   const year = new Date().toLocaleDateString('en-us', { year: 'numeric' })
     .toString()
     .substr(-2);
@@ -31,8 +29,8 @@ export const BudgetPlanTab1DetailsBreakdownMonth: FC<Props> = ({
       <TextInput
         currency='$'
         disabled={isEqual}
-        value={value?.toString()}
         type='number'
+        value={value?.toString()}
       />
     </div>
   );

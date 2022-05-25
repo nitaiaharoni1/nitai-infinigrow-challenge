@@ -6,7 +6,7 @@ import { BudgetPlanTab1DetailsTopRow } from '../BudgetPlanTab1DetailsTopRow/Budg
 import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 
 export const BudgetPlanTab1Details: FC = () => {
-  const [budgetAllocation, setBudgetAllocation] = useState<BudgetAllocation>(BudgetAllocation.MANUAL);
+  const [budgetAllocation, setBudgetAllocation] = useState<BudgetAllocation>(BudgetAllocation.EQUAL);
   const [baseline, setBaseline] = useState<number>(0);
 
   const handleBaselineChange = (value: number) => {
