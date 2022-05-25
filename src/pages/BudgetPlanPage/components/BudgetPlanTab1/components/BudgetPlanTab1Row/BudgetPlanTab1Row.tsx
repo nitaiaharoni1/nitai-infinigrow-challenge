@@ -1,4 +1,5 @@
-import { FC, MouseEvent } from 'react';
+import { Popper } from '@mui/material';
+import { FC, MouseEvent, useState } from 'react';
 
 import { AffiliateProgram, ArrowDown, Dots } from 'assets';
 
@@ -15,8 +16,11 @@ export const BudgetPlanTab1Row: FC<Props> = ({
   channel,
   index,
 }) => {
-  const handleDotsClick = (e: MouseEvent<SVGSVGElement>) => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  const handleDotsClick = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
+    setAnchorEl(anchorEl ? null : e.currentTarget);
     console.log('handleDotsClick');
   };
 
@@ -35,9 +39,26 @@ export const BudgetPlanTab1Row: FC<Props> = ({
         </div>
       </div>
 
-      <div className='cursor-pointer w-10 h-10 flex items-center justify-content-center rounded-full hover:shadow-lg'>
-        <Dots className='w-full' onClick={handleDotsClick} />
+      <div className='cursor-pointer w-10 h-10 flex items-center justify-content-center rounded-full hover:shadow-lg' onClick={handleDotsClick}>
+        <Dots className='w-full' />
       </div>
+
+      <Popper
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        placement='bottom-end'
+      >
+        <div className='border-2 bg-white w-36'>
+          <div className='hover:bg-gray-200 p-2 cursor-pointer'>
+            Edit
+          </div>
+
+          <div className='text-red-500 bg-red-50 hover:bg-red-200 p-2 cursor-pointer'>
+            Remove
+          </div>
+        </div>
+      </Popper>
+
     </div>
   );
 };
