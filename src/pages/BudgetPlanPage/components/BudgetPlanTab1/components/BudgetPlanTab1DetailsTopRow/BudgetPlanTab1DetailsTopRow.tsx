@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Info } from 'assets';
 import { TextInput } from 'components';
@@ -21,6 +21,13 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
   };
 
   const isManualAllocation = budgetAllocation === BudgetAllocation.MANUAL;
+
+  useEffect(() => {
+    if (isManualAllocation) {
+      handleBaseLineChange('');
+    }
+  });
+
   return (
     <div className='flex space-x-24'>
       {/* Budget Frequency */}
