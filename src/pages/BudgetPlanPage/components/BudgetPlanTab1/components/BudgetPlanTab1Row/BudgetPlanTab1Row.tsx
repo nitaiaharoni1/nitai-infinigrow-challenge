@@ -3,13 +3,17 @@ import { FC, MouseEvent } from 'react';
 import { AffiliateProgram, ArrowDown, Dots } from 'assets';
 
 interface Props {
-  onClick: () => void;
+  onClick: (index: number) => void;
   isExpanded: boolean;
+  channel: string;
+  index: number;
 }
 
 export const BudgetPlanTab1Row: FC<Props> = ({
   onClick,
   isExpanded,
+  channel,
+  index,
 }) => {
   const handleDotsClick = (e: MouseEvent<SVGSVGElement>) => {
     e.stopPropagation();
@@ -17,14 +21,17 @@ export const BudgetPlanTab1Row: FC<Props> = ({
   };
 
   return (
-    <div className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow' onClick={onClick}>
+    <div
+      className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow'
+      onClick={() => onClick(index)}
+    >
       <div className='flex items-center'>
         <ArrowDown className={`${isExpanded && 'rotate-180'}`} />
 
         <AffiliateProgram className='ml-8' />
 
         <div className='ml-4'>
-          Paid reviews
+          {channel}
         </div>
       </div>
 

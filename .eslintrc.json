@@ -28,6 +28,7 @@
   ],
   "rules": {
     "react/require-default-props": "off",
+    "react-hooks/exhaustive-deps": "off",
     "react/display-name": "off",
     "react/jsx-props-no-spreading": "off",
     "react/jsx-no-literals": "off",

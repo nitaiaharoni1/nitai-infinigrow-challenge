@@ -1,24 +1,32 @@
 import { FC, useState } from 'react';
 
-import { BudgetPlanTab1Row } from './components/BudgetPlanTab1Row/BudgetPlanTab1Row';
-import { BudgetPlanTab1Details } from './components/BudgetPlanTab1Details/BudgetPlanTab1Details';
+import { BudgetPlanTab1Item } from './components/BudgetPlanTab1Item/BudgetPlanTab1Item';
 
 interface Props {
-
+  channels: string[];
 }
 
-export const BudgetPlanTab1: FC<Props> = ({}) => {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+export const BudgetPlanTab1: FC<Props> = ({ channels }) => {
+  const [expandedIndex, setExpandedIndex] = useState<number>();
 
-  const handleExpand = () => {
-    setIsExpanded((prevExpand) => !prevExpand);
+  const handleExpand = (index: number) => {
+    setExpandedIndex(index);
   };
 
   return (
     <div className='mt-10'>
-      <BudgetPlanTab1Row isExpanded={isExpanded} onClick={handleExpand} />
-
-      {isExpanded && <BudgetPlanTab1Details />}
+      {channels.map((channel, index) => {
+        const isExpanded = expandedIndex === index;
+        return (
+          <BudgetPlanTab1Item
+            key={channel}
+            channel={channel}
+            index={index}
+            isExpanded={isExpanded}
+            onClick={handleExpand}
+          />
+        );
+      })}
     </div>
   );
 };
