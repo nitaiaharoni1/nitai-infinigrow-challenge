@@ -20,12 +20,19 @@ export const TextInput: FC<Props> = ({
   const [value, setValue] = useState('');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    let { value: val } = e.target;
+    // check if value contains not digits
+    if (type === 'number' && val.match(/[^0-9]/g)) {
+      val = val.replace(/[^0-9]/g, '');
+    }
+    setValue(val);
   };
 
   useEffect(() => {
     onChange?.(value);
   }, [value]);
+
+  const formattedValue = type === 'number' ? value.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : value;
 
   return (
     <div className={`${className} w-full`}>
@@ -34,7 +41,12 @@ export const TextInput: FC<Props> = ({
       <div className='border-2 w-full flex px-2 mr-2 items-center'>
         {currency && <div>{currency}</div>}
 
-        <input className='w-full p-2 outline-none text-gray-500' onChange={handleChange} placeholder={placeholder} type={type} value={value} />
+        <input
+          className='w-full p-2 outline-none text-gray-500'
+          onChange={handleChange}
+          placeholder={placeholder}
+          value={formattedValue}
+        />
       </div>
     </div>
   );

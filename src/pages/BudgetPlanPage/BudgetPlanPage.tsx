@@ -8,6 +8,12 @@ export const BudgetPlanPage: FC = () => {
   const [activeTab, setActiveTab] = useState<number>(0);
   const [channels, setChannels] = useState<string[]>(['Paid reviews', 'Paid Ads']);
 
+  const handleRemoveChannel = (index: number) => {
+    const newChannels = [...channels];
+    newChannels.splice(index, 1);
+    setChannels(newChannels);
+  };
+
   const handleAddChannel = (channelName: string) => {
     setChannels((prev) => [...prev, channelName]);
   };
@@ -24,7 +30,7 @@ export const BudgetPlanPage: FC = () => {
 
       <BudgetPlanTabsSelector activeTab={activeTab} setActiveTab={setActiveTab} />
 
-      <TabTemplate channels={channels} />
+      <TabTemplate channels={channels} onRemoveChannel={handleRemoveChannel} />
 
     </div>
   );

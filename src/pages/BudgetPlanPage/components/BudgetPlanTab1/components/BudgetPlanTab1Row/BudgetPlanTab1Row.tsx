@@ -4,14 +4,16 @@ import { FC, MouseEvent, useState } from 'react';
 import { AffiliateProgram, ArrowDown, Dots } from 'assets';
 
 interface Props {
-  onClick: (index: number) => void;
+  onExpand: (index: number) => void;
+  onRemove: (index: number) => void;
   isExpanded: boolean;
   channel: string;
   index: number;
 }
 
 export const BudgetPlanTab1Row: FC<Props> = ({
-  onClick,
+  onExpand,
+  onRemove,
   isExpanded,
   channel,
   index,
@@ -24,10 +26,13 @@ export const BudgetPlanTab1Row: FC<Props> = ({
     console.log('handleDotsClick');
   };
 
+  const handleExpand = () => onExpand(index);
+  const handleRemove = () => onRemove(index);
+
   return (
     <div
       className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow'
-      onClick={() => onClick(index)}
+      onClick={handleExpand}
     >
       <div className='flex items-center'>
         <ArrowDown className={`${isExpanded && 'rotate-180'}`} />
@@ -49,11 +54,7 @@ export const BudgetPlanTab1Row: FC<Props> = ({
         placement='bottom-end'
       >
         <div className='border-2 bg-white w-36'>
-          <div className='hover:bg-gray-200 p-2 cursor-pointer'>
-            Edit
-          </div>
-
-          <div className='text-red-500 bg-red-50 hover:bg-red-200 p-2 cursor-pointer'>
+          <div className='text-red-500 bg-red-50 hover:bg-red-200 p-2 cursor-pointer' onClick={handleRemove}>
             Remove
           </div>
         </div>

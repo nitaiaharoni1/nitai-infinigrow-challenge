@@ -7,13 +7,15 @@ interface Props {
   channel: string;
   index: number;
   isExpanded: boolean;
-  onClick: (index: number) => void;
+  onExpand: (index: number) => void;
+  onRemove: (index: number) => void;
 }
 
 export const BudgetPlanTab1Item: FC<Props> = ({
   channel,
   index,
-  onClick,
+  onExpand,
+  onRemove,
   isExpanded,
 }) => (
   <div className='mt-8'>
@@ -21,7 +23,8 @@ export const BudgetPlanTab1Item: FC<Props> = ({
       channel={channel}
       index={index}
       isExpanded={isExpanded}
-      onClick={onClick}
+      onExpand={onExpand}
+      onRemove={onRemove}
     />
 
     {isExpanded && <BudgetPlanTab1Details />}

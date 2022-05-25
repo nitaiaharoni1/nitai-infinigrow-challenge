@@ -4,9 +4,13 @@ import { BudgetPlanTab1Item } from './components/BudgetPlanTab1Item/BudgetPlanTa
 
 interface Props {
   channels: string[];
+  onRemoveChannel: (index: number) => void;
 }
 
-export const BudgetPlanTab1: FC<Props> = ({ channels }) => {
+export const BudgetPlanTab1: FC<Props> = ({
+  channels,
+  onRemoveChannel,
+}) => {
   const [expandedIndex, setExpandedIndex] = useState<number>();
 
   const handleExpand = (index: number) => {
@@ -27,7 +31,8 @@ export const BudgetPlanTab1: FC<Props> = ({ channels }) => {
             channel={channel}
             index={index}
             isExpanded={isExpanded}
-            onClick={handleExpand}
+            onExpand={handleExpand}
+            onRemove={onRemoveChannel}
           />
         );
       })}
