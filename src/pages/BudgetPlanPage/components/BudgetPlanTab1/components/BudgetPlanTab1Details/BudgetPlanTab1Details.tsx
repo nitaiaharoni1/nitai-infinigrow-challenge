@@ -31,7 +31,10 @@ export const BudgetPlanTab1Details: FC = () => {
         onBudgetAllocationChange={handleBudgetAllocationChange}
       />
 
-      <BudgetPlanTab1DetailsBreakdown budgetAllocation={budgetAllocation} />
+      <BudgetPlanTab1DetailsBreakdown
+        baseline={baseline}
+        budgetAllocation={budgetAllocation}
+      />
     </div>
   );
 };

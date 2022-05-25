@@ -16,11 +16,13 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
   budgetAllocation,
   onBaselineChange,
 }) => {
-  const a;
+  // const a;
 
   const handleBaseLineChange = (value: string) => {
-    onBaselineChange(+value);
+    onBaselineChange(Number(value));
   };
+
+  const isManualAllocation = budgetAllocation === BudgetAllocation.MANUAL;
 
   return (
     <div className='flex space-x-24'>
@@ -44,14 +46,14 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
 
       <div>
         <div className='flex items-center space-x-2 text-gray-500 w-60'>
-          <div>
+          <div style={{ color: isManualAllocation ? '#99A4C2' : '#2A3558' }}>
             Baseline [Annual] Budget
           </div>
 
           <Info />
         </div>
 
-        <TextInput onChange={handleBaseLineChange} type='number' />
+        <TextInput disabled={isManualAllocation} onChange={handleBaseLineChange} type='number' />
 
         <div />
       </div>

@@ -7,6 +7,8 @@ interface Props {
   placeholder?: string;
   label?: string;
   onChange?: (value: string) => void;
+  disabled?: boolean;
+  initValue?: string;
 }
 
 export const TextInput: FC<Props> = ({
@@ -16,8 +18,10 @@ export const TextInput: FC<Props> = ({
   placeholder = '',
   label,
   onChange,
+  disabled = false,
+  initValue = '',
 }) => {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState(initValue);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let { value: val } = e.target;
@@ -26,11 +30,8 @@ export const TextInput: FC<Props> = ({
       val = val.replace(/[^0-9]/g, '');
     }
     setValue(val);
+    onChange?.(val);
   };
-
-  useEffect(() => {
-    onChange?.(value);
-  }, [value]);
 
   const formattedValue = type === 'number' ? value.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : value;
 
@@ -43,6 +44,7 @@ export const TextInput: FC<Props> = ({
 
         <input
           className='w-full p-2 outline-none text-gray-500'
+          disabled={disabled}
           onChange={handleChange}
           placeholder={placeholder}
           value={formattedValue}
