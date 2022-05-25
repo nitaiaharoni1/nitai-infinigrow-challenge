@@ -35,8 +35,8 @@ export const BudgetPlanTab1Row: FC<Props> = ({
         </div>
       </div>
 
-      <div className='cursor-pointer w-14 h-14 flex items-center justify-content-center'>
-        <Dots onClick={handleDotsClick} />
+      <div className='cursor-pointer w-10 h-10 flex items-center justify-content-center rounded-full hover:shadow-lg'>
+        <Dots className='w-full' onClick={handleDotsClick} />
       </div>
     </div>
   );

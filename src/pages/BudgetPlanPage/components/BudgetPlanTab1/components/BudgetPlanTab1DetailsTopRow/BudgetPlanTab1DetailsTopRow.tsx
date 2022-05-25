@@ -4,11 +4,7 @@ import { Info } from 'assets';
 import { TextInput } from 'components';
 import { CategoryInput } from 'components/CategoryInput/CategoryInput';
 
-interface Props {
-
-}
-
-export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({}) => (
+export const BudgetPlanTab1DetailsTopRow: FC = () => (
   <div className='flex space-x-24'>
     {/* Budget Frequency */}
 

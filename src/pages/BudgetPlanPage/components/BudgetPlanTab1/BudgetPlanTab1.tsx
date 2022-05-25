@@ -10,7 +10,11 @@ export const BudgetPlanTab1: FC<Props> = ({ channels }) => {
   const [expandedIndex, setExpandedIndex] = useState<number>();
 
   const handleExpand = (index: number) => {
-    setExpandedIndex(index);
+    if (expandedIndex === index) {
+      setExpandedIndex(undefined);
+    } else {
+      setExpandedIndex(index);
+    }
   };
 
   return (
