@@ -6,7 +6,7 @@ import { getMonthName } from 'utils/functions/getMonthName';
 interface Props {
   monthIndex: number;
   isEqual: boolean;
-  value?: number;
+  value?: string;
 }
 
 export const BudgetPlanTab1DetailsBreakdownMonth: FC<Props> = ({
@@ -14,14 +14,14 @@ export const BudgetPlanTab1DetailsBreakdownMonth: FC<Props> = ({
   isEqual,
   value,
 }) => {
-  debugger
-  
+  debugger;
+
   const year = new Date().toLocaleDateString('en-us', { year: 'numeric' })
     .toString()
     .substr(-2);
   const monthString = getMonthName(monthIndex);
   const title = `${monthString} ${year}`;
-  
+
   return (
     <div>
       <div>
@@ -31,7 +31,7 @@ export const BudgetPlanTab1DetailsBreakdownMonth: FC<Props> = ({
       <TextInput
         currency='$'
         disabled={isEqual}
-        initValue={value?.toString()}
+        value={value?.toString()}
         type='number'
       />
     </div>

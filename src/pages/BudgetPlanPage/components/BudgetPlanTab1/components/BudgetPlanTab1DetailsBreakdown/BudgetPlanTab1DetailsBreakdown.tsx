@@ -17,7 +17,7 @@ export const BudgetPlanTab1DetailsBreakdown: FC<Props> = ({
   baseline,
 }) => {
   const isEqualAllocation = budgetAllocation === BudgetAllocation.EQUAL;
-  const value = isEqualAllocation ? baseline / monthesNum : undefined;
+  const value = isEqualAllocation ? (baseline / monthesNum).toFixed(1) : undefined;
 
   return (
     <div className='border-2 p-8 mt-14'>

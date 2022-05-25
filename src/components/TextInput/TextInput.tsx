@@ -8,7 +8,7 @@ interface Props {
   label?: string;
   onChange?: (value: string) => void;
   disabled?: boolean;
-  initValue?: string;
+  value?: string;
 }
 
 export const TextInput: FC<Props> = ({
@@ -19,21 +19,25 @@ export const TextInput: FC<Props> = ({
   label,
   onChange,
   disabled = false,
-  initValue = '',
+  value = '',
 }) => {
-  const [value, setValue] = useState(initValue);
+  const [val, setVal] = useState('');
+
+  useEffect(() => {
+    setVal(value);
+  }, [value]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    let { value: val } = e.target;
+    let { value: newValue } = e.target;
     // check if value contains not digits
-    if (type === 'number' && val.match(/[^0-9]/g)) {
-      val = val.replace(/[^0-9]/g, '');
+    if (type === 'number' && newValue.match(/[^0-9]/g)) {
+      newValue = newValue.replace(/[^0-9]/g, '');
     }
-    setValue(val);
-    onChange?.(val);
+    setVal(newValue);
+    onChange?.(newValue);
   };
 
-  const formattedValue = type === 'number' ? value.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : value;
+  const formattedValue = type === 'number' ? val.replace(/\B(?=(\d{3})+(?!\d))/g, ',') : val;
 
   return (
     <div className={`${className} w-full`}>
