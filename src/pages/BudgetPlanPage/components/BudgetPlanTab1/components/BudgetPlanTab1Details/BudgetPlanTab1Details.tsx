@@ -1,23 +1,38 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
-import { BudgetPlanTab1DetailsTopRow } from '../BudgetPlanTab1DetailsTopRow/BudgetPlanTab1DetailsTopRow';
 import { BudgetPlanTab1DetailsBreakdown } from '../BudgetPlanTab1DetailsBreakdown/BudgetPlanTab1DetailsBreakdown';
+import { BudgetPlanTab1DetailsTopRow } from '../BudgetPlanTab1DetailsTopRow/BudgetPlanTab1DetailsTopRow';
 
-interface Props {
+import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 
-}
+export const BudgetPlanTab1Details: FC = () => {
+  const [budgetAllocation, setBudgetAllocation] = useState<BudgetAllocation>(BudgetAllocation.MANUAL);
+  const [baseline, setBaseline] = useState<number>(0);
 
-export const BudgetPlanTab1Details: FC<Props> = ({}) => (
-  <div
-    className='border-2 p-8'
-    style={{
-      height: 580,
-      marginTop: -2,
-    }}
-  >
-    <BudgetPlanTab1DetailsTopRow />
+  const handleBaselineChange = (value: number) => {
+    setBaseline(value);
+  };
 
-    <BudgetPlanTab1DetailsBreakdown />
-  </div>
-);
+  const handleBudgetAllocationChange = (key: BudgetAllocation) => {
+    setBudgetAllocation(key);
+  };
+
+  return (
+    <div
+      className='border-2 p-8'
+      style={{
+        height: 580,
+        marginTop: -2,
+      }}
+    >
+      <BudgetPlanTab1DetailsTopRow
+        budgetAllocation={budgetAllocation}
+        onBaselineChange={handleBaselineChange}
+        onBudgetAllocationChange={handleBudgetAllocationChange}
+      />
+
+      <BudgetPlanTab1DetailsBreakdown budgetAllocation={budgetAllocation} />
+    </div>
+  );
+};
 

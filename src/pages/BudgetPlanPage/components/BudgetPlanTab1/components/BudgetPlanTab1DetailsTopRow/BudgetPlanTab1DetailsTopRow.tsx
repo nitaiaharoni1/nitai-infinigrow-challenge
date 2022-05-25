@@ -3,69 +3,89 @@ import { FC } from 'react';
 import { Info } from 'assets';
 import { TextInput } from 'components';
 import { CategoryInput } from 'components/CategoryInput/CategoryInput';
+import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 
-export const BudgetPlanTab1DetailsTopRow: FC = () => (
-  <div className='flex space-x-24'>
-    {/* Budget Frequency */}
+interface Props {
+  onBudgetAllocationChange: (key: BudgetAllocation) => void;
+  budgetAllocation: BudgetAllocation;
+  onBaselineChange: (value: number) => void;
+}
 
-    <div>
-      <div className='flex items-center space-x-2 text-gray-500'>
-        <div>
-          Budget Frequency
+export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
+  onBudgetAllocationChange,
+  budgetAllocation,
+  onBaselineChange,
+}) => {
+  const a;
+
+  const handleBaseLineChange = (value: string) => {
+    onBaselineChange(+value);
+  };
+
+  return (
+    <div className='flex space-x-24'>
+      {/* Budget Frequency */}
+
+      <div>
+        <div className='flex items-center space-x-2 text-gray-500'>
+          <div>
+            Budget Frequency
+          </div>
+
+          <Info />
         </div>
 
-        <Info />
+        {/* dropdown */}
+
+        <div />
       </div>
 
-      {/* dropdown */}
+      {/* Baseline [Annual] Budget */}
 
-      <div />
-    </div>
+      <div>
+        <div className='flex items-center space-x-2 text-gray-500 w-60'>
+          <div>
+            Baseline [Annual] Budget
+          </div>
 
-    {/* Baseline [Annual] Budget */}
-
-    <div>
-      <div className='flex items-center space-x-2 text-gray-500 w-60'>
-        <div>
-          Baseline [Annual] Budget
+          <Info />
         </div>
 
-        <Info />
+        <TextInput onChange={handleBaseLineChange} type='number' />
+
+        <div />
       </div>
 
-      <TextInput type='number' />
+      {/* Budget Allocation */}
 
-      <div />
-    </div>
+      <div>
+        <div className='flex items-center space-x-2 text-gray-500'>
+          <div>
+            Budget Allocation
+          </div>
 
-    {/* Budget Allocation */}
-
-    <div>
-      <div className='flex items-center space-x-2 text-gray-500'>
-        <div>
-          Budget Allocation
+          <Info />
         </div>
 
-        <Info />
+        <CategoryInput
+          onChange={onBudgetAllocationChange as (key: string) => void}
+          options={
+            [
+              {
+                key: 'equal',
+                label: 'Equal',
+              },
+              {
+                key: 'manual',
+                label: 'Manual',
+              },
+            ]
+          }
+        />
+
+        <div />
       </div>
-
-      <CategoryInput
-        options={
-          [
-            {
-              key: 'equal',
-              label: 'Equal',
-            },
-            {
-              key: 'manual',
-              label: 'Manual',
-            },
-          ]
-        }
-      />
-
-      <div />
     </div>
-  </div>
-);
+  );
+};
 
