@@ -14,6 +14,11 @@ export const BudgetPlanPage: FC = () => {
     setChannels(newChannels);
   };
 
+  const handleEditChannel = (index: number, title: string) => {
+    const newChannels = channels.map((channel, i) => (i === index ? title : channel));
+    setChannels(newChannels);
+  };
+
   const handleAddChannel = (channelName: string) => {
     setChannels((prev) => [...prev, channelName]);
   };
@@ -28,9 +33,16 @@ export const BudgetPlanPage: FC = () => {
 
       <BudgetPlanSetupChannel onAddChannel={handleAddChannel} />
 
-      <BudgetPlanTabsSelector activeTab={activeTab} setActiveTab={setActiveTab} />
+      <BudgetPlanTabsSelector
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
-      <TabTemplate channels={channels} onRemoveChannel={handleRemoveChannel} />
+      <TabTemplate
+        channels={channels}
+        onEditChannel={handleEditChannel}
+        onRemoveChannel={handleRemoveChannel}
+      />
 
     </div>
   );

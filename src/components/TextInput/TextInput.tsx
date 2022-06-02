@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, HTMLInputTypeAttribute, useEffect, useState } from 'react';
+import { ChangeEvent, FC, HTMLInputTypeAttribute, MouseEvent, useEffect, useState } from 'react';
 
 interface Props {
   className?: string;
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const TextInput: FC<Props> = ({
-  className,
+  className = '',
   type = 'text',
   currency = '',
   placeholder = '',
@@ -41,15 +41,16 @@ export const TextInput: FC<Props> = ({
 
   return (
     <div className={`${className} w-full`}>
-      {label && <div className='mb-2'>{label}</div>}
+      {label ? <div className='mb-2'>{label}</div> : null}
 
-      <div className='border-2 w-full flex px-2 mr-2 items-center'>
-        {currency && <div>{currency}</div>}
+      <div className='border-2 w-full flex px-2 mr-2 items-center bg-white'>
+        {currency || null}
 
         <input
-          className='w-full p-2 outline-none text-gray-500'
+          className='w-full p-2 outline-none text-gray-500 bg-white'
           disabled={disabled}
           onChange={handleChange}
+          onClick={(e: MouseEvent<HTMLElement>) => e.stopPropagation()}
           placeholder={placeholder}
           value={formattedValue}
         />

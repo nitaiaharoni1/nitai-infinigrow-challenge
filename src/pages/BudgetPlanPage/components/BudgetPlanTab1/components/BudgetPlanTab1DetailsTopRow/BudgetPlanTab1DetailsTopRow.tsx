@@ -4,6 +4,7 @@ import { Info } from 'assets';
 import { TextInput } from 'components';
 import { CategoryInput } from 'components/CategoryInput/CategoryInput';
 import { BudgetAllocation } from 'types/enums/BudgetAllocation';
+import colors from 'colors.module.scss';
 
 interface Props {
   onBudgetAllocationChange: (key: BudgetAllocation) => void;
@@ -33,7 +34,7 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
       {/* Budget Frequency */}
 
       <div>
-        <div className='flex items-center space-x-2 text-gray-500'>
+        <div className='flex items-center space-x-2 text-gray'>
           <div>
             Budget Frequency
           </div>
@@ -49,8 +50,8 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
       {/* Baseline [Annual] Budget */}
 
       <div>
-        <div className='flex items-center space-x-2 text-gray-500 w-60'>
-          <div style={{ color: isManualAllocation ? '#99A4C2' : '#2A3558' }}>
+        <div className='flex items-center space-x-2 text-gray w-60'>
+          <div style={{ color: isManualAllocation ? colors.lightBlue : colors.darkBlue }}>
             Baseline [Annual] Budget
           </div>
 
@@ -70,7 +71,7 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
       {/* Budget Allocation */}
 
       <div>
-        <div className='flex items-center space-x-2 text-gray-500'>
+        <div className='flex items-center space-x-2 text-gray'>
           <div>
             Budget Allocation
           </div>

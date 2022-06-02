@@ -32,7 +32,7 @@ export const BudgetPlanSetupChannelDialog: FC<Props> = ({
               Add Channel
             </div>
 
-            <div className='mt-4 font-normal text-gray-400'>
+            <div className='mt-4 font-normal text-bla'>
               Add one of your budget channels.
             </div>
 

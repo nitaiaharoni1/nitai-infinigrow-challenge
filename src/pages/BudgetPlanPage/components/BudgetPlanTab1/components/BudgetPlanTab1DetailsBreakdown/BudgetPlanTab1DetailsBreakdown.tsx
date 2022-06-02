@@ -3,6 +3,7 @@ import { FC } from 'react';
 
 import { BudgetPlanTab1DetailsBreakdownMonth } from '../BudgetPlanTab1DetailsBreakdownMonth/BudgetPlanTab1DetailsBreakdownMonth';
 
+import colors from 'colors.module.scss';
 import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 
 interface Props {
@@ -20,12 +21,12 @@ export const BudgetPlanTab1DetailsBreakdown: FC<Props> = ({
   const value = isEqualAllocation ? (baseline / monthesNum).toFixed(1) : undefined;
 
   return (
-    <div className='border-2 p-8 mt-14'>
-      <div className='font-semibold text-lg' style={{ color: isEqualAllocation ? '#99A4C2' : '#2A3558' }}>
+    <div className='border-2 p-8 mt-14 bg-light-gray'>
+      <div className='font-semibold text-lg' style={{ color: isEqualAllocation ? colors.lightBlue : colors.darkBlue }}>
         Budget Breakdown
       </div>
 
-      <div className='mt-4 font-normal text-gray-400'>
+      <div className='mt-4 font-normal text-gray'>
         By default, your budget will be equally divided throughout the year. You can manually change the budget allocation, either now or later.
       </div>
 

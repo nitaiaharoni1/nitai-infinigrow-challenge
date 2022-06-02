@@ -1,11 +1,11 @@
-import { FC } from 'react';
+import { ComponentProps, FC } from 'react';
 
 import { BudgetPlanTab1 } from '../components/BudgetPlanTab1/BudgetPlanTab1';
 
 interface Tab {
   label: string;
   id: string;
-  template: FC<any>;
+  template: FC<ComponentProps<typeof BudgetPlanTab1>>;
 }
 
 export const tabs: Tab[] = [
