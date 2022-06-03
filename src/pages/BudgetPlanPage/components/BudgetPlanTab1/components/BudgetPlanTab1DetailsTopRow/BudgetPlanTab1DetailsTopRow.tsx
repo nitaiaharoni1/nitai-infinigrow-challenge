@@ -39,7 +39,7 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
       {/* Budget Frequency */}
 
       <div>
-        <div className='flex items-center space-x-2 text-gray'>
+        <div className='flex items-center space-x-2 text-gray w-60'>
           <div>
             Budget Frequency
           </div>
