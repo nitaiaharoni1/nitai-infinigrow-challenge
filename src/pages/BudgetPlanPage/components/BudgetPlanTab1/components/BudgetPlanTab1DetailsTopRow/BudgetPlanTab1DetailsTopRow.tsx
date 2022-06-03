@@ -1,11 +1,10 @@
 import { FC, useEffect } from 'react';
 
-import { budgetFrequencyOptions } from '../../../../utils/budgetFrequencyOptions';
-
 import { Info } from 'assets';
 import colors from 'colors.module.scss';
 import { Dropdown, TextInput, CategoryInput } from 'components';
 import { budgetAllocationOptions } from 'pages/BudgetPlanPage/utils/budgetAllocationOptions';
+import { budgetFrequencyOptions } from 'pages/BudgetPlanPage/utils/budgetFrequencyOptions';
 import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 import { BudgetFrequency } from 'types/enums/BudgetFrequency';
 

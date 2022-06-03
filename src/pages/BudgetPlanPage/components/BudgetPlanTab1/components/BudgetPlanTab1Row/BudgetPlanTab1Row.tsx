@@ -42,7 +42,7 @@ export const BudgetPlanTab1Row: FC<Props> = ({
 
   return (
     <div
-      className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow'
+      className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow bg-light-gray'
       onClick={onExpand}
     >
       <div className='flex items-center'>
