@@ -18,3 +18,26 @@ $gray : #7E7E7E;
   gray: $gray;
 }
 
+.text-gray {
+  color: $gray;
+}
+
+.bg-gray {
+  background-color: $gray;
+}
+
+.bg-light-gray {
+  background-color: $lightGray;
+}
+
+.text-blue {
+  color: $darkBlue;
+}
+
+.bg-dark-blue {
+  background-color: $darkBlue;
+}
+
+.bg-red {
+  background-color: $lightRed;
+}
