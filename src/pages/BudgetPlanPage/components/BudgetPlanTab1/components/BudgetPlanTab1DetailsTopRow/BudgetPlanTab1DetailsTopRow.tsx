@@ -1,7 +1,6 @@
 import { FC, useEffect } from 'react';
 
 import { Info } from 'assets';
-import colors from 'colors.module.scss';
 import { Dropdown, TextInput, CategoryInput } from 'components';
 import { budgetAllocationOptions } from 'pages/BudgetPlanPage/utils/budgetAllocationOptions';
 import { budgetFrequencyOptions } from 'pages/BudgetPlanPage/utils/budgetFrequencyOptions';
@@ -58,7 +57,7 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
 
       <div>
         <div className='flex items-center space-x-2 text-gray w-60'>
-          <div style={{ color: isManualAllocation ? colors.lightBlue : colors.darkBlue }}>
+          <div className={isManualAllocation ? 'text-lightBlue' : 'text-darkBlue'}>
             Baseline [Annual] Budget
           </div>
 

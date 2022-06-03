@@ -42,7 +42,7 @@ export const BudgetPlanTab1Row: FC<Props> = ({
 
   return (
     <div
-      className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow bg-light-gray'
+      className='flex w-full border-2 h-14 items-center justify-between px-4 cursor-pointer hover:shadow bg-lightGray'
       onClick={onExpand}
     >
       <div className='flex items-center'>
@@ -77,7 +77,7 @@ export const BudgetPlanTab1Row: FC<Props> = ({
         open={Boolean(anchorEl)}
       >
         <div
-          className='text-red-500 bg-red hover:bg-red-200 p-2 pr-10 cursor-pointer'
+          className='text-red-500 bg-lightRed hover:bg-red-200 p-2 pr-10 cursor-pointer'
           onClick={onRemove}
         >
           Remove

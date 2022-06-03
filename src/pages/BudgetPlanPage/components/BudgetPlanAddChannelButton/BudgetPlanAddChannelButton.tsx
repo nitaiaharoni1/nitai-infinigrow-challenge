@@ -6,7 +6,7 @@ interface Props {
 
 export const BudgetPlanAddChannelButton: FC<Props> = ({ onClick }) => (
   <div
-    className='border-2 flex place-items-center pl-3 pr-2 h-10 w-32 cursor-pointer hover:shadow bg-light-gray'
+    className='border-2 flex place-items-center pl-3 pr-2 h-10 w-32 cursor-pointer hover:shadow bg-lightGray'
     onClick={onClick}
   >
     + Add Channel

@@ -3,9 +3,7 @@ import { FC } from 'react';
 
 import { BudgetPlanTab1DetailsBreakdownOption } from '../BudgetPlanTab1DetailsBreakdownOption/BudgetPlanTab1DetailsBreakdownOption';
 
-import { breakdownOptions } from '../../../../utils/breakdownOptions';
-
-import colors from 'colors.module.scss';
+import { breakdownOptions } from 'pages/BudgetPlanPage/utils/breakdownOptions';
 import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 import { BudgetFrequency } from 'types/enums/BudgetFrequency';
 
@@ -25,11 +23,8 @@ export const BudgetPlanTab1DetailsBreakdown: FC<Props> = ({
   const breakdownRange = range(breakdownOptions[budgetFrequency].range);
 
   return (
-    <div className='border-2 p-8 mt-14 bg-light-gray'>
-      <div
-        className='font-semibold text-lg'
-        style={{ color: isEqualAllocation ? colors.lightBlue : colors.darkBlue }}
-      >
+    <div className='border-2 p-8 mt-14 bg-lightGray'>
+      <div className={`font-semibold text-lg ${isEqualAllocation ? 'text-lightBlue' : 'text-darkBlue'}`}>
         Budget Breakdown
       </div>
 

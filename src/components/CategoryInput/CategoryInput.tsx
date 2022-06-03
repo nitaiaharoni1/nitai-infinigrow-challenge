@@ -27,7 +27,7 @@ export const CategoryInput: FC<Props> = ({
         return (
           <div
             key={option.key}
-            className={`p-2 border-2 text-gray-400 ${isSelected ? 'text-black' : 'cursor-pointer hover:shadow bg-light-gray'}`}
+            className={`p-2 border-2 text-gray-400 ${isSelected ? 'text-black' : 'cursor-pointer hover:shadow bg-lightGray'}`}
             onClick={() => handleChange(option.key)}
             style={{ marginLeft: -2 }}
           >
