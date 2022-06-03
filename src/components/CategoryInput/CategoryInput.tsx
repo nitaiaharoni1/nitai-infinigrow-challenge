@@ -1,8 +1,10 @@
 import { FC, useState } from 'react';
 
+import { IOption } from 'types/interfaces/IOption';
+
 interface Props {
   className?: string;
-  options: { key: string, label: string }[];
+  options: IOption[];
   onChange: (key: string) => void;
 }
 

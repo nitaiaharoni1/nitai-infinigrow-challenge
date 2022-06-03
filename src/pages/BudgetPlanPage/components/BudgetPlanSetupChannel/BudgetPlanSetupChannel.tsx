@@ -4,10 +4,10 @@ import { BudgetPlanAddChannelButton } from '../BudgetPlanAddChannelButton/Budget
 import { BudgetPlanSetupChannelDialog } from '../BudgetPlanSetupChannelDialog/BudgetPlanSetupChannelDialog';
 
 interface Props {
-  onAddChannel: (channelName: string) => void;
+  onAdd: (name: string) => void;
 }
 
-export const BudgetPlanSetupChannel: FC<Props> = ({ onAddChannel }) => {
+export const BudgetPlanSetupChannel: FC<Props> = ({ onAdd }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleOpen = () => setIsDialogOpen(true);
@@ -33,7 +33,7 @@ export const BudgetPlanSetupChannel: FC<Props> = ({ onAddChannel }) => {
 
       <BudgetPlanSetupChannelDialog
         isOpen={isDialogOpen}
-        onAddChannel={onAddChannel}
+        onAdd={onAdd}
         onClose={handleClose}
       />
     </>

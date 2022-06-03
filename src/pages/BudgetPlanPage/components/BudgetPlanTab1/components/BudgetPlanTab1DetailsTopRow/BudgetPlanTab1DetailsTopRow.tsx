@@ -1,19 +1,24 @@
 import { FC, useEffect } from 'react';
 
+import { budgetFrequencyOptions } from '../../../../utils/budgetFrequencyOptions';
+
 import { Info } from 'assets';
-import { TextInput } from 'components';
-import { CategoryInput } from 'components/CategoryInput/CategoryInput';
-import { BudgetAllocation } from 'types/enums/BudgetAllocation';
 import colors from 'colors.module.scss';
+import { Dropdown, TextInput, CategoryInput } from 'components';
+import { budgetAllocationOptions } from 'pages/BudgetPlanPage/utils/budgetAllocationOptions';
+import { BudgetAllocation } from 'types/enums/BudgetAllocation';
+import { BudgetFrequency } from 'types/enums/BudgetFrequency';
 
 interface Props {
   onBudgetAllocationChange: (key: BudgetAllocation) => void;
+  onBudgetFrequencyChange: (key: BudgetFrequency) => void;
   budgetAllocation: BudgetAllocation;
   onBaselineChange: (value: number) => void;
 }
 
 export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
   onBudgetAllocationChange,
+  onBudgetFrequencyChange,
   budgetAllocation,
   onBaselineChange,
 }) => {
@@ -42,7 +47,10 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
           <Info />
         </div>
 
-        {/* dropdown */}
+        <Dropdown
+          onChange={onBudgetFrequencyChange}
+          options={budgetFrequencyOptions}
+        />
 
         <div />
       </div>
@@ -81,18 +89,7 @@ export const BudgetPlanTab1DetailsTopRow: FC<Props> = ({
 
         <CategoryInput
           onChange={onBudgetAllocationChange as (key: string) => void}
-          options={
-            [
-              {
-                key: 'equal',
-                label: 'Equal',
-              },
-              {
-                key: 'manual',
-                label: 'Manual',
-              },
-            ]
-          }
+          options={budgetAllocationOptions}
         />
 
         <div />

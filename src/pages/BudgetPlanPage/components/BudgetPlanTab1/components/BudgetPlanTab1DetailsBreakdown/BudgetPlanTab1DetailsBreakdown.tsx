@@ -1,28 +1,35 @@
 import { range } from 'lodash';
 import { FC } from 'react';
 
-import { BudgetPlanTab1DetailsBreakdownMonth } from '../BudgetPlanTab1DetailsBreakdownMonth/BudgetPlanTab1DetailsBreakdownMonth';
+import { BudgetPlanTab1DetailsBreakdownOption } from '../BudgetPlanTab1DetailsBreakdownOption/BudgetPlanTab1DetailsBreakdownOption';
+
+import { breakdownOptions } from '../../../../utils/breakdownOptions';
 
 import colors from 'colors.module.scss';
 import { BudgetAllocation } from 'types/enums/BudgetAllocation';
+import { BudgetFrequency } from 'types/enums/BudgetFrequency';
 
 interface Props {
   budgetAllocation: BudgetAllocation;
+  budgetFrequency: BudgetFrequency;
   baseline: number;
 }
 
-const monthesNum = 12;
-
 export const BudgetPlanTab1DetailsBreakdown: FC<Props> = ({
   budgetAllocation,
+  budgetFrequency,
   baseline,
 }) => {
   const isEqualAllocation = budgetAllocation === BudgetAllocation.EQUAL;
-  const value = isEqualAllocation ? (baseline / monthesNum).toFixed(1) : undefined;
+
+  const breakdownRange = range(breakdownOptions[budgetFrequency].range);
 
   return (
     <div className='border-2 p-8 mt-14 bg-light-gray'>
-      <div className='font-semibold text-lg' style={{ color: isEqualAllocation ? colors.lightBlue : colors.darkBlue }}>
+      <div
+        className='font-semibold text-lg'
+        style={{ color: isEqualAllocation ? colors.lightBlue : colors.darkBlue }}
+      >
         Budget Breakdown
       </div>
 
@@ -31,15 +38,15 @@ export const BudgetPlanTab1DetailsBreakdown: FC<Props> = ({
       </div>
 
       <div className='mt-6 grid gap-4 grid-cols-6 grid-rows-2'>
-        {range(monthesNum)
-          .map((month) => (
-            <BudgetPlanTab1DetailsBreakdownMonth
-              key={month}
-              isEqual={isEqualAllocation}
-              monthIndex={month}
-              value={value}
-            />
-          ))}
+        {breakdownRange.map((index) => (
+          <BudgetPlanTab1DetailsBreakdownOption
+            key={index}
+            baseline={baseline}
+            budgetFrequency={budgetFrequency}
+            index={index}
+            isEqual={isEqualAllocation}
+          />
+        ))}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
-import { Popper } from '@mui/material';
-import { ChangeEvent, FC, MouseEvent, useState } from 'react';
+import { Menu } from '@mui/material';
+import { FC, MouseEvent, useState } from 'react';
 
-import { TextInput } from '../../../../../../components';
 import { BudgetPlanTab1RowChannelTitle } from '../BudgetPlanTab1RowChannelTitle/BudgetPlanTab1RowChannelTitle';
 
 import { AffiliateProgram, ArrowDown, Dots } from 'assets';
@@ -25,6 +24,11 @@ export const BudgetPlanTab1Row: FC<Props> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [isEditMode, setIsEditMode] = useState<boolean>(false);
+
+  const handleClose = (e: MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+    setAnchorEl(null);
+  };
 
   const handleDotsClick = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation();
@@ -62,21 +66,31 @@ export const BudgetPlanTab1Row: FC<Props> = ({
         <Dots className='w-full' />
       </div>
 
-      <Popper
+      <Menu
         anchorEl={anchorEl}
+        MenuListProps={{
+          style: {
+            padding: 0,
+          },
+        }}
+        onClose={handleClose}
         open={Boolean(anchorEl)}
-        placement='bottom-end'
       >
-        <div className='border-2 bg-white w-36'>
-          <div className='text-red-500 bg-red hover:bg-red-200 p-2 cursor-pointer' onClick={onRemove}>
-            Remove
-          </div>
-
-          <div className='hover:shadow p-2 cursor-pointer' onClick={handleEditClick}>
-            Edit
-          </div>
+        <div
+          className='text-red-500 bg-red hover:bg-red-200 p-2 pr-10 cursor-pointer'
+          onClick={onRemove}
+        >
+          Remove
         </div>
-      </Popper>
+
+        <div
+          className='p-2 hover:bg-gray-100 cursor-pointer pr-10'
+          onClick={handleEditClick}
+        >
+          Edit
+        </div>
+
+      </Menu>
 
     </div>
   );

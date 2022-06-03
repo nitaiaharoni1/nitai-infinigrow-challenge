@@ -30,7 +30,7 @@ export const BudgetPlanTab1Item: FC<Props> = ({
       onRemove={onRemove}
     />
 
-    {isExpanded ? <BudgetPlanTab1Details /> : null}
+    {isExpanded || <BudgetPlanTab1Details />}
   </div>
 );
 
